@@ -1,0 +1,16 @@
+{
+  "name": "backend_proj",
+  "version": "1.0.0",
+  "description": "backend project",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "keywords": [
+    "javascript",
+    "backend",
+    "node"
+  ],
+  "author": "Mustansar Jutt",
+  "license": "ISC"
+}
