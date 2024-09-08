@@ -1,8 +1,21 @@
-import express from "express";
-import connectDB from "./db/connect.js";
-import "dotenv/config";
+import connectDB from "./db/connect.js"
+import "dotenv/config"
+import app from "./app.js"
 
-
-const app = express();
 // console.log(process.env.MONGO_URI)
-connectDB();
+// connnection db is aysn function and async code return a promise
+connectDB()
+.then(() => {
+    app.on("error", (err) => {
+        console.log("Error: ", err)
+    })
+    app.listen(process.env.PORT || 3000, () => {
+        console.log(`Server is listening on port ${process.env.PORT}`)
+    })
+})
+.catch((err) => {
+    console.log("Connection Failed ", err)
+})
+
+// app.get("GET", (err, req, res, next) => {})
+// next is a flag
