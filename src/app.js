@@ -1,4 +1,5 @@
 import express from "express"
+
 import cors from "cors"
 import cookieParser from "cookie-parser"
 import {limit} from "./constants.js"
@@ -21,6 +22,11 @@ app.use(express.urlencoded({extended: true, limit: limit}))
 app.use(express.static("public"))
 // to use crud opr on user's browser
 app.use(cookieParser())
-
 // multer is 3rd party packgae to configure file upload
+
+// importing route
+import userRouter from "./routes/user.router.js"
+// route declareation
+app.use("/api/v1/users", userRouter)
+
 export default app
