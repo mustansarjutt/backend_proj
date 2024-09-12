@@ -47,6 +47,7 @@ const userSchema = new Schema({
 }, { timestamps: true });
 
 // password encrypt
+// next() is a signal 
 userSchema.pre("save", async function (next) {
     if (!this.isModified("password")) return next();
     this.password = await bcrypt.hash(this.password, 10);
@@ -65,11 +66,11 @@ userSchema.methods.generateAccessToken = function () {
             email: this.email,
             username: this.username,
             fullName: this.fullName
-        },
-        process.env.ACCESS_TOKEN_SECRET,
+        }, // payload
+        process.env.ACCESS_TOKEN_SECRET, // secret
         {
             expiresIn: process.env.ACCESS_TOKEN_EXPIRY
-        }
+        } // expiry
     );
 }
 userSchema.methods.generateRefreshToken = function () {

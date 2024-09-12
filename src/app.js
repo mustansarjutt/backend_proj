@@ -2,7 +2,7 @@ import express from "express"
 
 import cors from "cors"
 import cookieParser from "cookie-parser"
-import {limit} from "./constants.js"
+import { limit } from "./constants.js"
 
 const app = express()
 
