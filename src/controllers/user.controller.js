@@ -30,6 +30,11 @@ const generateAccessAndRefereshTokens = async (userId) => {
 // 8. check for user creation
 // 9. return res - based upon succession
 
+const options = {
+    httpOnly: true,
+    secure: true
+}
+
 const registerUser = asyncHandler(async (req, res) => {
     // 1. data from form and json - found from body
     const { fullName, email, username, password } = req.body;
@@ -131,11 +136,6 @@ const loginUser = asyncHandler(async (req, res) => {
 
     const loggenInUser = await User.findById(user._id).select("-password -refreshToken");
 
-    const options = {
-        httpOnly: true,
-        secure: true
-    }
-
     return res
     .status(200)
     .cookie("accessToken", accessToken, options)
@@ -165,11 +165,6 @@ const logoutUser = asyncHandler(async (req, res) => {
             new: true
         }
     );
-
-    const options = {
-        httpOnly: true,
-        secure: true
-    }
 
     return res
     .status(200)
