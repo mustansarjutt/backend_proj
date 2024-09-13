@@ -106,8 +106,12 @@ const loginUser = asyncHandler(async (req, res) => {
     // send res that logged in
 
     const { email, username, password } = req.body;
-    if (!username || !email) {
-        throw new ApiError(400, "username or password");
+    // this is the alternate the other
+    // if (!(username || email)) {
+    //     throw new ApiError(400, "username or password");
+    // }
+    if (!username && !email) {
+        throw new ApiError(400, "username or password required");
     }
 
     const user = await User.findOne({
