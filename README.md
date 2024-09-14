@@ -100,3 +100,11 @@ see on internet
 # Todo
 
 in update avatar, make utility function that delete old avatar from cloudinary (pending)
+
+
+## subscription schema
+
+- when each user subscribe a channel. Then we create a document of that that user and channel
+- after: when we want to count the subscribers of that channel. Then we technically count the docs that have that particular channel
+- we can't use array bcz it is expensive operation
+- if we want to show the no of subscribed channels then we select the docs of that have the that user and then we select the channels from that docs
