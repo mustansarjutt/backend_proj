@@ -95,3 +95,8 @@ see on internet
 - 3xx (redirection)
 - 4xx (client error)
 - 5xx (server error)
+
+
+# Todo
+
+in update avatar, make utility function that delete old avatar from cloudinary (pending)
